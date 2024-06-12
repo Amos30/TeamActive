@@ -18,7 +18,6 @@ function csvTextToArray(csvText) {
 }
 
 function csvArrayToTable(csvArray) {
-    console.log("Finished:", csvArray)
     for (let i in csvArray) {
         if (i == 0) {
             $('#stats-table-header-id').html(csvArray[i][0])
