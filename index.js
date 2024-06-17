@@ -24,6 +24,10 @@ function csvArrayToTable(csvArray) {
         var secondScore = csvArray[i][2]
         var difference = secondScore - firstScore
 
+        if (!name || name.trim().length == 0) {
+            continue
+        }
+
         if (i == 0) {
             // title
             $('#stats-table-header-id').html(name)
