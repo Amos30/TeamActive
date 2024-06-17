@@ -33,9 +33,9 @@ function csvArrayToTable(csvArray) {
             // column labels
             $('#stats-table-id').append('<tr class="active-row"><td>' + name + '</td><td>' + firstScore + '</td><td>' + secondScore + '</td><td>Increase</td></tr>')
             continue
+        } else {
+            // column data
+            $('#stats-table-id').append('<tr><td><b>' + name + '</b></td><td>' + firstScore + '</td><td>' + secondScore + '</td><td>' + difference + '</td></tr>')
         }
-
-        // column data
-        $('#stats-table-id').append('<tr><td>' + name + '</td><td>' + firstScore + '</td><td>' + secondScore + '</td><td>' + difference + '</td></tr>')
     }
 }
