@@ -27,12 +27,9 @@ function csvArrayToTable(csvArray) {
         if (i == 0) {
             // title
             $('#stats-table-header-id').html(name)
-            continue
         } else if (i == 1) {
-
             // column labels
             $('#stats-table-id').append('<tr class="active-row"><td>' + name + '</td><td>' + firstScore + '</td><td>' + secondScore + '</td><td>Increase</td></tr>')
-            continue
         } else {
             // column data
             $('#stats-table-id').append('<tr><td><b>' + name + '</b></td><td>' + firstScore + '</td><td>' + secondScore + '</td><td>' + difference + '</td></tr>')
