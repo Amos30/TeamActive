@@ -23,8 +23,8 @@ function csvArrayToTable(csvArray) {
     for (let i in tableArray) {
         var rowData = tableArray[i]
 
-        var latestScore = parseInt(rowData.latestScore) + parseInt(rowData.latestTopLevelScore)
-        var lastScore = parseInt(rowData.lastScore) + parseInt(rowData.lastTopLevelScore)
+        var latestScore = parseInt(rowData.latestScore) + parseInt(rowData.topLevelScore)
+        var lastScore = parseInt(rowData.lastScore)
 
         var difference = latestScore - lastScore
 
@@ -37,10 +37,10 @@ function csvArrayToTable(csvArray) {
             $('#stats-table-header-id').html(rowData.name)
         } else if (i == 1) {
             // column labels
-            $('#stats-table-id').append('<tr class="active-row"><td>' + rowData.name + '</td><td>' + rowData.latestTopLevelScore + '</td><td>' + rowData.lastTopLevelScore + '</td><td>' + rowData.latestScore + '</td><td>' + rowData.lastScore + '</td><td>Increase</td></tr>')
+            $('#stats-table-id').append('<tr class="active-row"><td>' + rowData.name + '</td><td>' + rowData.topLevelScore + '</td><td>' + rowData.latestScore + '</td><td>' + rowData.lastScore + '</td><td>Increase</td></tr>')
         } else {
             // column data
-            $('#stats-table-id').append('<tr><td><b>' + rowData.name + '</b></td><td>' + rowData.latestTopLevelScore + '</td><td>' + rowData.lastTopLevelScore + '</td><td>' + rowData.latestScore + '</td><td>' + rowData.lastScore + '</td><td>' + difference + '</td></tr>')
+            $('#stats-table-id').append('<tr><td><b>' + rowData.name + '</b></td><td>' + rowData.topLevelScore + '</td><td>' + rowData.latestScore + '</td><td>' + rowData.lastScore + '</td><td>' + difference + '</td></tr>')
         }
     }
 }
@@ -52,10 +52,9 @@ function createTableData(csvArray) {
         var rowData = {}
 
         rowData.name = csvArray[i][0]
-        rowData.latestTopLevelScore = csvArray[i][1]
-        rowData.lastTopLevelScore = csvArray[i][2]
-        rowData.latestScore = csvArray[i][3]
-        rowData.lastScore = csvArray[i][4]
+        rowData.topLevelScore = csvArray[i][1]
+        rowData.latestScore = csvArray[i][2]
+        rowData.lastScore = csvArray[i][3]
 
         if (i == 0 || i == 1) {
             headers.push(rowData)
@@ -72,12 +71,12 @@ function createTableData(csvArray) {
 }
 
 function compareIncrease(a, b) {
-    var latestAScore = parseInt(a.latestScore) + parseInt(a.latestTopLevelScore)
-    var lastAScore = parseInt(a.lastScore) + parseInt(a.lastTopLevelScore)
+    var latestAScore = parseInt(a.latestScore) + parseInt(a.topLevelScore)
+    var lastAScore = parseInt(a.lastScore)
     var aDifference = latestAScore - lastAScore
 
-    var latestBScore = parseInt(b.latestScore) + parseInt(b.latestTopLevelScore)
-    var lastBScore = parseInt(b.lastScore) + parseInt(b.lastTopLevelScore)
+    var latestBScore = parseInt(b.latestScore) + parseInt(b.topLevelScore)
+    var lastBScore = parseInt(b.lastScore)
     var bDifference = latestBScore - lastBScore
 
     return bDifference > aDifference
